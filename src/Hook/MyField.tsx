@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { Field, useField } from "formik";
 
 export const MyField = (props: any) => {
