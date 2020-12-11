@@ -1,10 +1,10 @@
 import React from "react";
-import { LoginForm } from "./Component/LoginForm";
+import { Index } from "./Component/Index";
 
 function App() {
   return (
     <div>
-      <LoginForm />
+      <Index />
     </div>
   );
 }

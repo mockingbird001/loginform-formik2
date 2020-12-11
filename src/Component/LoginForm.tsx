@@ -1,22 +1,36 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import * as yup from "yup";
 import { Formik, Form, Field } from "formik";
 import { MyField } from "../Hook/MyField";
 
 const Schema = yup.object().shape({
-  Email: yup.string().email("Invalid Email").required("This field is required"),
-  Password: yup
+  email: yup.string().email("Invalid Email").required("This field is required"),
+  password: yup
     .string()
     .min(6, "Please Enter less then 6 letters")
     .required("This field required"),
 });
 
+type Props = {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+};
+
+const initialState: Props = {
+  email: "",
+  password: "",
+  rememberMe: false,
+};
+
 export const LoginForm: FC = () => {
+  const [values, setValues] = useState(initialState);
+
   return (
     <div>
       <Formik
         validationSchema={Schema}
-        initialValues={{ Email: "", Password: "", RememberMe: false }}
+        initialValues={initialState}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
           console.log("submit", data);
@@ -27,15 +41,25 @@ export const LoginForm: FC = () => {
           <Form>
             <div>
               <label htmlFor="email">Email</label>
-              <MyField placeholder="Email" name="Email" type="Email" />
+              <MyField
+                id="email"
+                placeholder="Email"
+                name="email"
+                type="email"
+              />
             </div>
             <div>
               <label htmlFor="password">Password</label>
-              <MyField placeholder="Password" name="Password" type="Password" />
+              <MyField
+                id="password"
+                placeholder="Password"
+                name="password"
+                type="password"
+              />
             </div>
             <div>
               <label>
-                <Field name="RememberMe" type="checkbox" />
+                <Field id="rememberMe" name="rememberMe" type="checkbox" />
                 RememberMe
               </label>
             </div>
