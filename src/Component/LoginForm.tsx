@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import * as yup from "yup";
 import { Formik, Form, Field } from "formik";
 import { MyField } from "../Hook/MyField";
@@ -24,8 +24,6 @@ const initialState: Props = {
 };
 
 export const LoginForm: FC = () => {
-  const [values, setValues] = useState(initialState);
-
   return (
     <div>
       <Formik
@@ -58,14 +56,14 @@ export const LoginForm: FC = () => {
               />
             </div>
             <div>
-              <label>
+              <label htmlFor="rememberMe">
                 <Field id="rememberMe" name="rememberMe" type="checkbox" />
                 RememberMe
               </label>
             </div>
             <div>
               <button disabled={isSubmitting} type="submit">
-                sunmit
+                submit
               </button>
             </div>
             <div>

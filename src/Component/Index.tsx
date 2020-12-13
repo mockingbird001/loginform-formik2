@@ -3,7 +3,12 @@ import { LoginForm } from "./LoginForm";
 
 export const Index = () => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <LoginForm />
     </div>
   );
